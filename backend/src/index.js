@@ -17,9 +17,9 @@ app.listen(port, () => {
 });
 
 // Endpoints
-app.get("/products", async (req, res) => {
+app.get("/events", async (req, res) => {
     try {
-        const query = "SELECT * FROM products";
+        const query = "SELECT * FROM events";
 
         const connection = await mysql.getConnection();
         const data = await connection.query(query);
@@ -28,3 +28,18 @@ app.get("/products", async (req, res) => {
         res.send("Algo ha ido mal");
     }
 });
+
+
+// CONTINUACIÓN BASE DE DATOS
+
+// CREATE TABLE attendance (relación muchos a muchos: usuario - evento)
+// user_id
+// event_id
+// status
+
+// opción going/interested -> cómo representarlo en BBDD? string o enum?
+// Posibilidad-> status ENUM('Going', 'Interested', 'Not going') DEFAULT null
+
+// Un usuario no puede repetir asistencia (evitar duplicados de: mismo usuario y mismo evento). EJEMPLO:
+// user 3 -> event 10 > going
+// user 3 -> event 15 -> interested
