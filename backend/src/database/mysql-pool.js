@@ -2,8 +2,8 @@ const mysql = require("mysql2/promise");
 
 const getConnection = async () => {
     const connection = await mysql.createConnection({
-        host: "",
-        database: "",
+        host: "root",
+        database: "pitfinder_db",
         user: process.env.USER_WORKBENCH,
         password: process.env.PASSWORD_WORKBENCH,
     });
