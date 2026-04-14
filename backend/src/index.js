@@ -38,8 +38,11 @@ app.get("/events", async (req, res) => {
 // status
 
 // opción going/interested -> cómo representarlo en BBDD? string o enum?
-// Posibilidad-> status ENUM('Going', 'Interested', 'Not going') DEFAULT null
+// Posibilidad-> status ENUM('going', 'interested', 'not going') DEFAULT 'going'
 
-// Un usuario no puede repetir asistencia (evitar duplicados de: mismo usuario y mismo evento). EJEMPLO:
+// Un usuario puede asistir a muchos eventos
+// Un evento puede tener muchos usuarios
+// Un usuario no puede asistir dos veces al mismo evento (evitar duplicados de: mismo usuario y mismo evento). EJEMPLO:
 // user 3 -> event 10 > going
 // user 3 -> event 15 -> interested
+// Añadiendo: PRIMARY KEY (user_id, event_id)
